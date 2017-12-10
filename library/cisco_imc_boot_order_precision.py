@@ -51,7 +51,7 @@ EXAMPLES = '''
 
 
 def policy_exists(server, module):
-    from imcsdk.apis.server.bios import boot_order_precision_exists as exists
+    from imcsdk.apis.server.boot import boot_order_precision_exists as exists
 
     ansible = module.params
     match, err = exists(handle=server,
@@ -67,7 +67,7 @@ def policy_exists(server, module):
 
 
 def boot_order_precision(server, module):
-    from imcsdk.apis.server.bios import boot_order_precision_set as \
+    from imcsdk.apis.server.boot import boot_order_precision_set as \
                                         set_boot_order
 
     results = {}
