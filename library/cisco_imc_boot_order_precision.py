@@ -83,7 +83,7 @@ def boot_order_precision(server, module):
         set_boot_order(handle=server,
                        boot_devices=ansible['boot_devices'],
                        reboot_on_update=ansible['reboot_on_update'],
-                       reapply=(False, True)[ansible['reapply'] == "yes"],
+                       reapply=ansible['reapply'],
                        configured_boot_mode=ansible['configured_boot_mode'],
                        server_id=ansible['server_id'])
 
