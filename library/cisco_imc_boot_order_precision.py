@@ -51,7 +51,7 @@ EXAMPLES = '''
 
 
 def policy_exists(server, module):
-    from imcsdk.apis.server.bios import boot_order_precision_exists as exists
+    from imcsdk.apis.server.boot import boot_order_precision_exists as exists
 
     ansible = module.params
     match, err = exists(handle=server,
@@ -67,7 +67,7 @@ def policy_exists(server, module):
 
 
 def boot_order_precision(server, module):
-    from imcsdk.apis.server.bios import boot_order_precision_set as \
+    from imcsdk.apis.server.boot import boot_order_precision_set as \
                                         set_boot_order
 
     results = {}
@@ -82,8 +82,8 @@ def boot_order_precision(server, module):
 
         set_boot_order(handle=server,
                        boot_devices=ansible['boot_devices'],
-                       reboot_on_update=(False, True)[ansible['reboot_on_update'] == "yes"],
-                       reapply=(False, True)[ansible['reapply'] == "yes"],
+                       reboot_on_update=ansible['reboot_on_update'],
+                       reapply=ansible['reapply'],
                        configured_boot_mode=ansible['configured_boot_mode'],
                        server_id=ansible['server_id'])
 
