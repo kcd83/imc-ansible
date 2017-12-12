@@ -88,7 +88,7 @@ def bios_setup(server, module):
             results["msg"] = str(current_value)
 
             # Set only if not already the correct value
-            if current_value != value:
+            if module.check_mode or current_value != value:
                 setattr(managed_object, flag, value)
                 server.set_mo(managed_object)
                 results["changed"] = True
@@ -118,7 +118,7 @@ def main():
             secure=dict(required=False, default=None),
             proxy=dict(required=False, default=None)
         ),
-        supports_check_mode=False
+        supports_check_mode=True
     )
 
     conn = ImcConnection(module)
